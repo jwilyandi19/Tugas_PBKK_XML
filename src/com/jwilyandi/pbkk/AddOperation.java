@@ -3,9 +3,21 @@ package com.jwilyandi.pbkk;
 public class AddOperation implements Operation{
 	private int num1;
 	private int num2;
-	private String message;
-	public AddOperation() {
+	private Message addMessage;
+	public AddOperation(int num1,int num2,Message message) {
+		super();
+		this.num1 = num1;
+		this.num2 = num2;
+		this.addMessage = message;
+	}
 	
+	public AddOperation(Message message) {
+		super();
+		this.addMessage = message;
+	}
+	
+	public AddOperation() {
+		super();
 	}
 	
 	public void setNum1(int num1) {
@@ -28,11 +40,18 @@ public class AddOperation implements Operation{
 		return this.num1 + this.num2;
 	}
 	
-	public void setMessage(String message) {
-		this.message = message;
+	public void setMessage(Message message) {
+		this.addMessage = message;
 	}
 	
-	public String getMessage() {
-		return this.message;
+	public Message getMessage() {
+		return addMessage;
 	}
+	
+	public String returnMessage() {
+		return Integer.toString(num1) + "+" + Integer.toString(num2) + "="
+				+ Integer.toString(operate());
+	}
+	
+	
 }

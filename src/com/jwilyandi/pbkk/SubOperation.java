@@ -1,5 +1,6 @@
 package com.jwilyandi.pbkk;
 
+
 public class SubOperation implements Operation {
 	private int num1;
 	private int num2;
@@ -28,11 +29,17 @@ public class SubOperation implements Operation {
 		return this.num1 - this.num2;
 	}
 	
+	
 	public void setMessage(String message) {
 		this.message = message;
 	}
 	
 	public String getMessage() {
 		return this.message;
+	}
+	
+	public String returnMessage() {
+		return Integer.toString(num1) + "-" + Integer.toString(num2) + "="
+				+ Integer.toString(operate()) + " " + message;
 	}
 }

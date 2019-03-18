@@ -3,9 +3,21 @@ package com.jwilyandi.pbkk;
 public class MulOperation implements Operation {
 	private int num1;
 	private int num2;
-	private String message;
-	public MulOperation() {
+	private Message mulMessage;
+	public MulOperation(int num1,int num2,Message message) {
+		super();
+		this.num1 = num1;
+		this.num2 = num2;
+		this.mulMessage = message;
+	}
 	
+	public MulOperation(Message message) {
+		super();
+		this.mulMessage = message;
+	}
+	
+	public MulOperation() {
+		super();
 	}
 	
 	public void setNum1(int num1) {
@@ -28,11 +40,16 @@ public class MulOperation implements Operation {
 		return this.num1 * this.num2;
 	}
 	
-	public void setMessage(String message) {
-		this.message = message;
+	public void setMessage(Message message) {
+		this.mulMessage = message;
 	}
 	
-	public String getMessage() {
-		return this.message;
+	public Message getMessage() {
+		return mulMessage;
+	}
+	
+	public String returnMessage() {
+		return Integer.toString(num1) + "*" + Integer.toString(num2) + "="
+				+ Integer.toString(operate());
 	}
 }

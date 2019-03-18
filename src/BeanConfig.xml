@@ -7,28 +7,38 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd 
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context.xsd">
+        
+    <context:property-placeholder location="classpath:num.properties"/>
+	<!--Inversion of Control -->
 	<bean id="divOp" class="com.jwilyandi.pbkk.DivOperation">
-		<property name="num1" value="0"></property>
-		<property name="num2" value="0"></property>
+		<property name="num1" value="2400"></property>
+		<property name="num2" value="25"></property>
 		<property name="message" value="Pembagian"></property>
 	</bean>
 	
-	<bean id="mulOp" class="com.jwilyandi.pbkk.MulOperation">
-		<property name="num1" value="0"></property>
-		<property name="num2" value="0"></property>
-		<property name="message" value="Perkalian"></property>
+	<!-- DI with Constructor Injection -->
+	<bean id="mulMessage" class="com.jwilyandi.pbkk.MulMessage">
 	</bean> 
-	
-	<bean id="addOp" class="com.jwilyandi.pbkk.AddOperation">
-		<property name="num1" value="0"></property>
-		<property name="num2" value="0"></property>
-		<property name="message" value="Pertambahan"></property>
+	<bean id="mulOp" class="com.jwilyandi.pbkk.MulOperation">
+		<constructor-arg ref="mulMessage"/>
+		<property name="num1" value="2400"></property>
+		<property name="num2" value="25"></property>
 	</bean>
 	
+	<!-- DI with Setter Injection -->
+	<bean id="addMessage" class="com.jwilyandi.pbkk.AddMessage">
+	</bean>
+	<bean id="addOp" class="com.jwilyandi.pbkk.AddOperation">
+		<property name="message" ref="addMessage"></property>
+		<property name="num1" value="1241241"></property>
+		<property name="num2" value="546565"></property>
+	</bean>
+	
+	<!--IoC with Properties -->
 	<bean id="subOp" class="com.jwilyandi.pbkk.SubOperation">
-		<property name="num1" value="0"></property>
-		<property name="num2" value="0"></property>
-		<property name="message" value="Pengurangan"></property>
+		<property name="num1" value="${num1}"></property>
+		<property name="num2" value="${num2}"></property>
+		<property name="message" value="${message}"></property>
 	</bean>
 
 
